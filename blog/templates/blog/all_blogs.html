@@ -1,0 +1,15 @@
+{%extends 'portapp/base_2.html'%}
+
+{% block content %}
+<h1>My Blog Page</h1>
+
+<h2>Abhirup has {{keyblogs.count}} blog{{keyblogs.count|pluralize}}</h2>
+{%for keyblog in keyblogs%}
+<a href="{% url 'blog:detailspage' keyblog.id %}"><h2>{{keyblog.title}}</h2></a>
+<h3>{{keyblog.mydatetime|date:'H:i D d M Y'|upper}}</h3>
+<p>{{keyblog.description|safe|truncatechars:15}}</p>
+
+
+{%endfor%}
+
+{% endblock %}

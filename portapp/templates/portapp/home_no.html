@@ -1,0 +1,36 @@
+{%extends 'portapp/base_2.html'%}
+
+{%load static%}
+
+{% block content %}
+<h2 class="mt-5">Abhirup's Portfolio</h2>
+
+<div class="row justify-content-center my-3">
+  <div class="col-1">
+    <img src="{% static 'portapp/IMG_20191129_105629.jpg' %}" height=200 width=140>
+  </div>
+</div>
+
+<br>
+<a href="{%static 'portapp/Abhirup_Poddar_Resume.pdf'%}">Resume</a>
+<hr>
+<div class="row">
+{%for keyport in keyports%}
+<div class="col-lg-4 col-md-6">
+  {% if keyport.url %}
+  <a href="{{ keyport.url }}">
+    <img src="{{ keyport.image.url }}" class="img-fluid mb-2">
+  </a>
+      {% else %}
+
+      <img src="{{ keyport.image.url }}" class="img-fluid mb-2">
+      {% endif %}
+      <h3>{{ keyport.title }}</h3>
+      <p>{{ keyport.description }}</p>
+
+      </div>
+      {% endfor %}
+      </div>
+<a href={%url 'blog:bloghomepage'%}>Blogs</a>
+
+{% endblock %}
